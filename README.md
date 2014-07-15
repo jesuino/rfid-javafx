@@ -1,4 +1,3 @@
-jug-call4papers
+JavaFX App and RFID
 ===============
-
-Uma aplicação de Call4Paper com JEE 6 para uso nos eventos do JUG Vale
+An application responsible to read a RFID tag and interacts with a secured REST WEB Service to change data related to the RFID tag.
