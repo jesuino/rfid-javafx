@@ -1,4 +1,4 @@
-rfid-javafx
-===========
+jug-call4papers
+===============
 
-A JavaFX application that shows how to read a RFID tag and access a REST Web Service to register and read people information.
+Uma aplicação de Call4Paper com JEE 6 para uso nos eventos do JUG Vale
