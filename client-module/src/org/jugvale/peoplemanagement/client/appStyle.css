@@ -1,0 +1,9 @@
+.title {
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-text-alignment: center;
+}
+
+.title:hover {
+    -fx-cursor: hand;
+}

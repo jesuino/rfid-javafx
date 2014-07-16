@@ -21,3 +21,12 @@ bin/
 /client-module/nbproject/private/
 /client-module/dist/
 /client-module/build/
+
+# NetBeans specific #
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
