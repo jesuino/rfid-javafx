@@ -1,12 +1,16 @@
 package org.jugvale.peoplemanagement.misc;
 
+import java.util.Arrays;
+
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
 import javax.inject.Inject;
 
 import org.jugvale.peoplemanagement.model.Person;
+import org.jugvale.peoplemanagement.model.Role;
 import org.jugvale.peoplemanagement.service.PersonService;
+import org.jugvale.peoplemanagement.service.RoleService;
 
 /**
  * 
@@ -20,7 +24,9 @@ import org.jugvale.peoplemanagement.service.PersonService;
 public class AppBootstrap {
 
 	@Inject
-	PersonService service;
+	PersonService personService;
+	@Inject
+	RoleService roleService;
 
 	/**
 	 * Add some test data
@@ -33,6 +39,12 @@ public class AppBootstrap {
 		p.setAge(26);
 		p.setJob("Support Engineer");
 		p.setRfid("abc");
-		service.save(p);
+		Role r = new Role();
+		r.setName("Admin");
+		r = roleService.save(r);
+		p.setRoles(Arrays.asList(r));
+		personService.save(p);
+		
+		
 	}
 }

@@ -12,8 +12,8 @@ import javax.persistence.Id;
  */
 @Entity
 public class Role {
-	@GeneratedValue
 	@Id
+	@GeneratedValue
 	private long id;
 	private String name;
 	
