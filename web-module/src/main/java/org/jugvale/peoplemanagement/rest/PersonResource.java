@@ -1,5 +1,7 @@
 package org.jugvale.peoplemanagement.rest;
 
+import java.util.List;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -34,5 +36,10 @@ public class PersonResource {
 	public Response addPerson(Person p){
 		service.save(p);
 		return Response.status(Status.CREATED).build();
+	}
+	
+	@GET
+	public List<Person> getAll(){
+		return service.listAll();
 	}
 }
