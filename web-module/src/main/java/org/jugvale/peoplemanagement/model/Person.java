@@ -2,6 +2,7 @@ package org.jugvale.peoplemanagement.model;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -9,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 /**
  * 
@@ -18,6 +21,7 @@ import javax.persistence.ManyToMany;
  * 
  */
 @Entity
+@Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "rfid" }) })
 public class Person {
 
 	@GeneratedValue
@@ -25,10 +29,11 @@ public class Person {
 	private long id;
 	private String firstName;
 	private String lastName;
+	@Column(name="rfid")
 	private String rfid;
 	private String job;
 	private int age;
-	@ManyToMany(fetch=FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "person_role", joinColumns = @JoinColumn(name = "person_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
 	private List<Role> roles;
 

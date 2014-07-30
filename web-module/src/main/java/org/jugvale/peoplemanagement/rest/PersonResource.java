@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.persistence.PersistenceException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -22,24 +23,26 @@ import org.jugvale.peoplemanagement.service.PersonService;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class PersonResource {
-	
+
 	@Inject
 	PersonService service;
-	
+
 	@GET
 	@Path("rfid/{rfid}")
-	public Person getPersonByRfid(@PathParam("rfid") String rfid){
+	public Person getPersonByRfid(@PathParam("rfid") String rfid) {
 		return service.findByRFID(rfid);
 	}
-	
+
 	@POST
-	public Response addPerson(Person p){
+	public Response addPerson(Person p) {
+		// TODO: Handle conflicts and return the correct HTTP code when a
+		// repeated RFID is sent
 		service.save(p);
 		return Response.status(Status.CREATED).build();
 	}
-	
+
 	@GET
-	public List<Person> getAll(){
+	public List<Person> getAll() {
 		return service.listAll();
 	}
 }
