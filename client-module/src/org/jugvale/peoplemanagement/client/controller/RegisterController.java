@@ -13,18 +13,20 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import org.jugvale.peoplemanagement.client.model.Person;
 import org.jugvale.peoplemanagement.client.rfid.ui.FTDIReaderPane;
+import org.jugvale.peoplemanagement.client.service.PersonService;
 
 /**
  *
  * @author william
  */
 public class RegisterController implements Initializable {
-    
+
     @FXML
     Pane formPane;
     @FXML
-    StackPane mainPane; 
+    StackPane mainPane;
     @FXML
     Label lblRFID;
     @FXML
@@ -34,7 +36,11 @@ public class RegisterController implements Initializable {
     @FXML
     TextField txtJob;
     @FXML
+    TextField txtAge;
+    @FXML
     Label lblStatus;
+
+    PersonService service;
 
     FTDIReaderPane rfidPane;
 
@@ -46,13 +52,21 @@ public class RegisterController implements Initializable {
         rfidPane.setVisible(false);
         mainPane.getChildren().add(rfidPane);
         formPane.visibleProperty().bind(rfidPane.visibleProperty().not());
+        service = PersonService.getInstance();
     }
 
     public void save() {
-        System.out.println(txtLastName.getText());
-        System.out.println(txtJob.getText());
-        System.out.println(txtFirstName.getText());
-        System.out.println(lblRFID.getText());
+        Person toSave = new Person(
+                32,
+                txtFirstName.getText(),
+                txtLastName.getText(),
+                lblRFID.getText(),
+                txtJob.getText(),
+                Integer.parseInt(txtAge.getText())
+        );
+        service.save(toSave, p -> {
+            lblStatus.setText("Person " + p.getFirstName() + " with RFID " + p.getRfid() + " saved with success");
+        }, lblStatus::setText);
     }
 
     public void showRfidPane() {

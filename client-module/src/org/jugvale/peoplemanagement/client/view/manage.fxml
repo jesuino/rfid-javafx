@@ -19,12 +19,12 @@
         <TextField fx:id="txtFilter" onKeyReleased="#filter" prefWidth="200.0" promptText="Filter by Name" />
         <TableView fx:id="tblPerson" prefHeight="268.0" prefWidth="481.0">
           <columns>
-            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="38.0" text="ID" />
-            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="52.0" text="RFID" />
-            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="143.0" text="First Name" />
-            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="122.0" text="Last Name" />
-            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="87.0" text="Job" />
-            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="37.0" text="Age" />
+            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="38.0" text="ID" fx:id="cId" />
+            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="52.0" text="RFID" fx:id="cRFID" />
+            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="131.0" text="First Name" fx:id="cFirstName" />
+            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="95.0" text="Last Name" fx:id="cLastName" />
+            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="125.0" text="Job" fx:id="cJob" />
+            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="37.0" text="Age" fx:id="cAge" />
           </columns>
         </TableView>
         <Label fx:id="lblError" prefWidth="481.0" text="" />

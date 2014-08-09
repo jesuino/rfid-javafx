@@ -21,15 +21,17 @@ import org.jugvale.peoplemanagement.client.model.Person;
  */
 class MockPersonService extends PersonService {
 
-    private List<Person> people;
+    private final List<Person> people;
 
     MockPersonService() {
-        people = Arrays.asList(
-                new Person(1, "John", "Smith", "abc", "Programmer", 20),
-                new Person(2, "Joshua", "Ali", "kld", "Analyst", 30),
-                new Person(3, "Maste", "Ram", "vvv", "Programmer", 27),
-                new Person(4, "Blood", "Mary", "jnh", "Typewriter", 65)
-        );
+        people = new ArrayList<>();
+        people.addAll(
+                Arrays.asList(
+                        new Person(1, "John", "Smith", "abc", "Programmer", 20),
+                        new Person(2, "Joshua", "Ali", "kld", "Analyst", 30),
+                        new Person(3, "Maste", "Ram", "vvv", "Programmer", 27),
+                        new Person(4, "Blood", "Mary", "jnh", "Typewriter", 65)
+                ));
 
         // adding some random data..
     }
@@ -57,6 +59,7 @@ class MockPersonService extends PersonService {
         if (toRemove == null) {
             onFail.accept("Cant find person with ID " + id);
         } else {
+            people.remove(toRemove);
             onSuccess.accept("People with ID " + id + " removed with success");
         }
 
