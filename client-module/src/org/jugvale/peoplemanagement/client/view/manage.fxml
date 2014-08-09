@@ -5,9 +5,35 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml">
+<AnchorPane id="AnchorPane" prefHeight="380.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml">
   <children>
-    <Label layoutX="44.0" layoutY="55.0" text="MAnaging" />
+    <VBox id="VBox" alignment="CENTER" layoutX="6.0" layoutY="7.0" spacing="5.0">
+      <children>
+        <Label styleClass="title" text="Registered People">
+          <font>
+            <Font size="13.0" />
+          </font>
+        </Label>
+        <TextField prefWidth="200.0" promptText="Filter by Name" />
+        <TableView prefHeight="285.0" prefWidth="481.0">
+          <columns>
+            <TableColumn prefWidth="75.0" text="ID" />
+            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="100.0" text="RFID" />
+            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="114.0" text="First Name" />
+            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="110.0" text="Last Name" />
+            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="95.0" text="Job" />
+          </columns>
+        </TableView>
+        <HBox id="HBox" alignment="CENTER" spacing="5.0">
+          <children>
+            <Button mnemonicParsing="false" text="Refresh" />
+            <Button mnemonicParsing="false" text="Remove" />
+            <Button mnemonicParsing="false" text="Add New" />
+          </children>
+        </HBox>
+      </children>
+    </VBox>
   </children>
 </AnchorPane>

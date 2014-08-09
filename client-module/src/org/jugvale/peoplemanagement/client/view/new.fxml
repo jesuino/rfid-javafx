@@ -6,8 +6,41 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml">
+<AnchorPane id="AnchorPane" prefHeight="380.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml" fx:controller="org.jugvale.peoplemanagement.client.controller.MainController">
   <children>
-    <Label layoutX="351.0" layoutY="150.0" text="new" />
+    <VBox id="VBox" alignment="CENTER" layoutX="14.0" layoutY="17.0" spacing="5.0">
+      <children>
+        <Label styleClass="title" text="Add new Person" />
+        <GridPane prefWidth="315.0">
+          <children>
+            <Label text="Last Name" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <Label text="RFID" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <Label text="First Name" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <Label text="Job" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+            <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+            <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+          </children>
+          <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="184.0" minWidth="10.0" prefWidth="80.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="292.0" minWidth="10.0" prefWidth="222.0" />
+          </columnConstraints>
+          <rowConstraints>
+            <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          </rowConstraints>
+        </GridPane>
+        <HBox id="HBox" alignment="CENTER" spacing="5.0">
+          <children>
+            <Button mnemonicParsing="false" text="Cancel" />
+            <Button mnemonicParsing="false" text="Save" />
+          </children>
+        </HBox>
+      </children>
+    </VBox>
+    <Button layoutX="386.0" layoutY="42.0" mnemonicParsing="false" text="SCAN" />
   </children>
 </AnchorPane>

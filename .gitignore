@@ -1,5 +1,5 @@
 *.class
-
+*.bak
 # Package Files 
 *.jar
 *.war

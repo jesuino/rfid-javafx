@@ -6,13 +6,14 @@
 package org.jugvale.peoplemanagement.client.view;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.layout.Pane;
 
 /**
@@ -22,17 +23,32 @@ import javafx.scene.layout.Pane;
  */
 public class AppNavigation {
 
-    private final String INITIAL_FXML = "/org/jugvale/peoplemanagement/client/view/initial.fxml";
-    private final String MANAGE_FXML = "/org/jugvale/peoplemanagement/client/view/manage.fxml";
-    private final String NEW_FXML = "/org/jugvale/peoplemanagement/client/view/new.fxml";
-    private final String SCAN_FXML = "/org/jugvale/peoplemanagement/client/view/manage.fxml";
+    public static enum Screens {
 
+        SCAN("/org/jugvale/peoplemanagement/client/view/scan.fxml"),
+        NAVIGATION("/org/jugvale/peoplemanagement/client/view/navigation.fxml"),
+        MANAGE("/org/jugvale/peoplemanagement/client/view/manage.fxml"),
+        NEW("/org/jugvale/peoplemanagement/client/view/new.fxml");
+
+        private final String fxml;
+
+        Screens(String fxml) {
+            this.fxml = fxml;
+        }
+
+        public String getFxml() {
+            return this.fxml;
+        }
+    }
+
+    public BooleanProperty isHome;
     private static AppNavigation instance;
     private Pane contentParent;
     private Map<Screens, Node> initializedScreens;
+    private Screens home = Screens.NAVIGATION;
 
     private AppNavigation() {
-        initializeScreens();
+        isHome = new SimpleBooleanProperty();
     }
 
     public static AppNavigation getInstance() {
@@ -42,37 +58,23 @@ public class AppNavigation {
         return instance;
     }
 
-    private void initializeScreens() {
+    public void navigateTo(Screens s) {
         try {
-            initializedScreens = new HashMap<>();
-            URL initialScreenUrl = getClass().getResource(INITIAL_FXML);
-            URL newScreenUrl = getClass().getResource(NEW_FXML);
-            URL manageScreenUrl = getClass().getResource(MANAGE_FXML);
-            URL scanScreenUrl = getClass().getResource(SCAN_FXML);
-
-            initializedScreens.put(Screens.INITIAL, FXMLLoader.load(initialScreenUrl));
-            initializedScreens.put(Screens.NEW, FXMLLoader.load(newScreenUrl));
-            initializedScreens.put(Screens.MANAGE, FXMLLoader.load(manageScreenUrl));
-            initializedScreens.put(Screens.SCAN, FXMLLoader.load(scanScreenUrl));
+            Parent p;
+            p = FXMLLoader.load(getClass().getResource(s.getFxml()));
+            contentParent.getChildren().setAll(p);
+            System.out.println(s.equals(home));
+            isHome.set(s.equals(home));
         } catch (IOException ex) {
             Logger.getLogger(AppNavigation.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-
-    public void navigateTo(Screens s) {
-        // TODO: Add effects when navigating to a screen
-        contentParent.getChildren().setAll(initializedScreens.get(s));
     }
 
     public void setContentParent(Pane contentParent) {
         this.contentParent = contentParent;
     }
 
-    public static enum Screens {
-
-        SCAN,
-        INITIAL,
-        MANAGE,
-        NEW
+    public void setHome(Screens s) {
+        this.home = s;
     }
 }

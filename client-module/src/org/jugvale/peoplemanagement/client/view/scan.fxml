@@ -6,8 +6,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml">
+<AnchorPane id="AnchorPane" prefHeight="380.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml" fx:controller="org.jugvale.peoplemanagement.client.view.ScanController">
   <children>
-    <Label layoutX="44.0" layoutY="55.0" text="SCANNNINGNNN" />
+    <Label layoutX="14.0" layoutY="14.0" styleClass="title" text="Scan RFID" />
+    <Label fx:id="lblReadInfo" layoutX="0.0" layoutY="111.0" prefHeight="55.0" prefWidth="500.0" text="Label" />
+    <Button layoutX="204.0" layoutY="192.0" mnemonicParsing="false" text="SCAN" />
+    <Label fx:id="lblStatus" layoutX="0.0" layoutY="237.0" prefWidth="38.0" text="Label" />
+    <Label fx:id="lblRFID" layoutX="0.0" layoutY="54.0" prefHeight="55.0" prefWidth="500.0" text="Label" />
   </children>
 </AnchorPane>

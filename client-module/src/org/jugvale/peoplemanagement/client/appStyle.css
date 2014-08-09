@@ -1,9 +1,21 @@
-.title {
+.homeLabel {
     -fx-font-size: 30px;
+    -fx-text-fill: red;
+    -fx-effect: dropshadow(three-pass-box , red, 20, 0.4 , 0 , 0 );
+}
+
+.homeLabel:hover {
+    -fx-cursor: hand;
+}
+
+.title {
+    -fx-font-size: 20px;
     -fx-font-weight: bold;
     -fx-text-alignment: center;
 }
 
-.title:hover {
-    -fx-cursor: hand;
+.navigationButton {
+    -fx-font-size: 18px;
+    -fx-font-weight: bolder;
+    -fx-effect: dropshadow(three-pass-box , whitesmoke, 10, 0.4 , 0 , 0 );
 }

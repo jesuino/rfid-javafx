@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="380.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml" fx:controller="org.jugvale.peoplemanagement.client.controller.MainController">
+  <children>
+    <VBox alignment="CENTER" layoutX="-2.0" layoutY="36.0" prefHeight="312.0" prefWidth="502.0" spacing="100.0">
+      <children>
+        <Button mnemonicParsing="false" onAction="#navigateToScan" prefHeight="80.0" prefWidth="350.0" styleClass="navigationButton" text="Scan RFID Tag">
+          <VBox.margin>
+            <Insets />
+          </VBox.margin>
+        </Button>
+        <Button mnemonicParsing="false" onAction="#navigateToManage" prefHeight="80.0" prefWidth="350.0" styleClass="navigationButton" text="Manage Registered People" />
+        <Button mnemonicParsing="false" onAction="#navigateToNew" prefHeight="80.0" prefWidth="350.0" styleClass="navigationButton" text="Register Person" />
+      </children>
+    </VBox>
+  </children>
+</AnchorPane>

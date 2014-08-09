@@ -6,14 +6,16 @@
 
 package org.jugvale.peoplemanagement.client;
 
+import java.io.IOException;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
-import javafx.geometry.Pos;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import org.jugvale.peoplemanagement.client.view.AppNavigation;
 
 /**
  * The main class
@@ -23,27 +25,19 @@ public class App extends Application {
     
     @Override
     public void start(Stage primaryStage) {
-        BorderPane root = new BorderPane();
-        Pane center = new Pane();
+        URL rootUrl = getClass().getResource("/org/jugvale/peoplemanagement/client/view/initial.fxml");
         
-        Label lblTitle = new Label("RFID People Management");
-        lblTitle.getStyleClass().add("title");
-        root.setTop(lblTitle);
-        root.setCenter(center);
-        
-        BorderPane.setAlignment(lblTitle, Pos.CENTER);
-        
+        Pane root = null;
+        try {
+            root = FXMLLoader.load(rootUrl);
+        } catch (IOException ex) {
+            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+            System.exit(0);
+        }
         Scene scene = new Scene(root, 800, 600 );
         scene.getStylesheets().add("/org/jugvale/peoplemanagement/client/appStyle.css");
-        primaryStage.setTitle("Hello World!");
+        primaryStage.setTitle("People Management APP");
         primaryStage.setScene(scene);
         primaryStage.show();
-        
-        
-        lblTitle.setOnMouseClicked(e -> {
-            AppNavigation.getInstance().navigateTo(AppNavigation.Screens.INITIAL);
-        });
-        AppNavigation.getInstance().setContentParent(center);
-        AppNavigation.getInstance().navigateTo(AppNavigation.Screens.INITIAL);
     }
 }
