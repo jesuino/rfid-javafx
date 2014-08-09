@@ -63,7 +63,6 @@ public class AppNavigation {
             Parent p;
             p = FXMLLoader.load(getClass().getResource(s.getFxml()));
             contentParent.getChildren().setAll(p);
-            System.out.println(s.equals(home));
             isHome.set(s.equals(home));
         } catch (IOException ex) {
             Logger.getLogger(AppNavigation.class.getName()).log(Level.SEVERE, null, ex);

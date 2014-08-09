@@ -48,7 +48,6 @@ public class NavigationController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         AppNavigation.getInstance().setContentParent(contentPane);
         btnHome.visibleProperty().bind(AppNavigation.getInstance().isHome.not());
-        AppNavigation.getInstance().isHome.addListener((o, old, n) -> System.out.println(n));
         AppNavigation.getInstance().navigateTo(AppNavigation.Screens.NAVIGATION);
     }
 }

@@ -10,29 +10,29 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import org.jugvale.peoplemanagement.client.rfid.ui.FTDIReaderPane;
 
 /**
- * FXML Controller class
  *
  * @author william
  */
-public class ScanController implements Initializable {
-
+public class RegisterController implements Initializable {
+    
     @FXML
-    VBox infoPane;
-
+    Pane formPane;
     @FXML
-    StackPane mainPane;
-
+    StackPane mainPane; 
     @FXML
     Label lblRFID;
-
     @FXML
-    Label lblReadInfo;
-
+    TextField txtFirstName;
+    @FXML
+    TextField txtLastName;
+    @FXML
+    TextField txtJob;
     @FXML
     Label lblStatus;
 
@@ -42,20 +42,21 @@ public class ScanController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         rfidPane = new FTDIReaderPane(s -> {
             lblRFID.setText("RFID: " + s);
-            lblStatus.setText("RFID Read. Searching info on the DB...");
-            getPersonInfo(s);
         }, lblStatus::setText);
         rfidPane.setVisible(false);
         mainPane.getChildren().add(rfidPane);
-        infoPane.visibleProperty().bind(rfidPane.visibleProperty().not());
+        formPane.visibleProperty().bind(rfidPane.visibleProperty().not());
     }
 
-    public void readRFID() {
+    public void save() {
+        System.out.println(txtLastName.getText());
+        System.out.println(txtJob.getText());
+        System.out.println(txtFirstName.getText());
+        System.out.println(lblRFID.getText());
+    }
+
+    public void showRfidPane() {
         rfidPane.askForDeviceAndReadTag();
-    }
-
-    public void getPersonInfo(String rfid) {
-        // TODO: Go to the API and bring info!
     }
 
 }

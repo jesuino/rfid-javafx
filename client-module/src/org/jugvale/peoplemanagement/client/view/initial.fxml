@@ -9,12 +9,20 @@
 
 <AnchorPane id="AnchorPane" prefHeight="468.0000999999975" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml" fx:controller="org.jugvale.peoplemanagement.client.controller.NavigationController">
   <children>
-    <Label alignment="CENTER" layoutX="0.0" layoutY="8.0" prefWidth="500.0" styleClass="homeLabel" text="People Management" textFill="BLACK" underline="false">
-      <font>
-        <Font size="13.0" />
-      </font>
-    </Label>
-    <Pane fx:id="contentPane" layoutX="0.0" layoutY="58.0" prefHeight="380.0" prefWidth="500.0" />
-    <Button fx:id="btnHome" layoutX="434.0" layoutY="443.0" mnemonicParsing="false" onAction="#navigateToHome" styleClass="navigationButton" text="Home" />
+    <VBox id="VBox" alignment="CENTER" layoutX="0.0" layoutY="8.0" spacing="20.0">
+      <children>
+        <Label alignment="CENTER" prefWidth="500.0" styleClass="homeLabel" text="People Management" textFill="BLACK" underline="false">
+          <font>
+            <Font size="13.0" />
+          </font>
+        </Label>
+        <Pane fx:id="contentPane" prefHeight="380.0" prefWidth="500.0">
+          <children>
+            <Separator layoutX="0.0" layoutY="376.0" prefWidth="500.0" />
+          </children>
+        </Pane>
+        <Button fx:id="btnHome" mnemonicParsing="false" onAction="#navigateToHome" styleClass="navigationButton" text="Home" />
+      </children>
+    </VBox>
   </children>
 </AnchorPane>
