@@ -7,7 +7,6 @@ package org.jugvale.peoplemanagement.client.service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
@@ -38,8 +37,12 @@ class MockPersonService extends PersonService {
 
     @Override
     public void save(Person p, Consumer<Person> onSuccess, Consumer<String> onFail) {
-        people.add(p);
-        onSuccess.accept(p);
+        get(p.getRfid(), found -> {
+            onFail.accept("Person with RFID " + p.getRfid() + " found on the database.");
+        }, s -> {
+            people.add(p);
+            onSuccess.accept(p);
+        });        
     }
 
     @Override
