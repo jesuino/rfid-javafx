@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="468.0000999999975" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml" fx:controller="org.jugvale.peoplemanagement.client.controller.NavigationController">
+<AnchorPane id="AnchorPane" prefHeight="468.0000999999975" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml" fx:controller="org.jugvale.peoplemanagement.client.controller.InitialController">
   <children>
     <VBox id="VBox" alignment="CENTER" layoutX="0.0" layoutY="8.0" spacing="20.0">
       <children>

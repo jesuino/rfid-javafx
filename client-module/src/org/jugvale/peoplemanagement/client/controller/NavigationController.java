@@ -7,8 +7,6 @@ package org.jugvale.peoplemanagement.client.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.beans.binding.BooleanExpression;
-import javafx.beans.value.ObservableBooleanValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -20,18 +18,8 @@ import org.jugvale.peoplemanagement.client.view.AppNavigation;
  *
  * @author william
  */
-public class NavigationController implements Initializable {
-
-    @FXML
-    Pane contentPane;
-
-    @FXML
-    Button btnHome;
-
-    public void navigateToHome() {
-        AppNavigation.getInstance().navigateTo(AppNavigation.Screens.NAVIGATION);
-    }
-
+public class NavigationController {
+    
     public void navigateToNew() {
         AppNavigation.getInstance().navigateTo(AppNavigation.Screens.NEW);
     }
@@ -43,11 +31,5 @@ public class NavigationController implements Initializable {
     public void navigateToScan() {
         AppNavigation.getInstance().navigateTo(AppNavigation.Screens.SCAN);
     }
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        AppNavigation.getInstance().setContentParent(contentPane);
-        btnHome.visibleProperty().bind(AppNavigation.getInstance().isHome.not());
-        AppNavigation.getInstance().navigateTo(AppNavigation.Screens.NAVIGATION);
-    }
+    
 }

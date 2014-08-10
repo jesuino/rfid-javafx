@@ -11,7 +11,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -27,17 +26,17 @@ public class App extends Application {
     public void start(Stage primaryStage) {
         URL rootUrl = getClass().getResource("/org/jugvale/peoplemanagement/client/view/initial.fxml");
 
-        Pane root = null;
         try {
-            root = FXMLLoader.load(rootUrl);
+            Pane root = FXMLLoader.load(rootUrl);
+            Scene scene = new Scene(root, 500, 500);
+            scene.getStylesheets().add("/org/jugvale/peoplemanagement/client/appStyle.css");
+            primaryStage.setTitle("People Management APP");
+            primaryStage.setScene(scene);
+            primaryStage.show();
         } catch (IOException ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
             System.exit(0);
         }
-        Scene scene = new Scene(root, 500, 500);
-        scene.getStylesheets().add("/org/jugvale/peoplemanagement/client/appStyle.css");
-        primaryStage.setTitle("People Management APP");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+
     }
 }
