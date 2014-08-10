@@ -28,6 +28,10 @@
 }
 
 .lblRFID {
+    -fx-font-size: 20px;
+    -fx-font-weight: bolder;
+    -fx-font-style: italic;
+    -fx-text-fill: blue;
 
 }
 

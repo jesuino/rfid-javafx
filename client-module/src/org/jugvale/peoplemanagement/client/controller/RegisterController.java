@@ -47,7 +47,8 @@ public class RegisterController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         rfidPane = new FTDIReaderPane(s -> {
-            lblRFID.setText("RFID: " + s);
+            lblRFID.setText("RFID: " + s + " (click to scan)");
+            lblRFID.setUserData(s);
         }, lblStatus::setText);
         rfidPane.setVisible(false);
         mainPane.getChildren().add(rfidPane);
@@ -57,10 +58,9 @@ public class RegisterController implements Initializable {
 
     public void save() {
         Person toSave = new Person(
-                32,
                 txtFirstName.getText(),
                 txtLastName.getText(),
-                lblRFID.getText(),
+                String.valueOf(lblRFID.getUserData()),
                 txtJob.getText(),
                 Integer.parseInt(txtAge.getText())
         );
@@ -72,5 +72,4 @@ public class RegisterController implements Initializable {
     public void showRfidPane() {
         rfidPane.askForDeviceAndReadTag();
     }
-
 }

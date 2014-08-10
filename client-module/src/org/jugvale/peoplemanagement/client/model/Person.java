@@ -20,8 +20,8 @@ public class Person {
     private String rfid;
     private String job;
     private int age;
-    
-    public Person () {
+
+    public Person() {
     }
 
     public Person(long id, String firstName, String lastName, String rfid, String job, int age) {
@@ -32,6 +32,15 @@ public class Person {
         this.job = job;
         this.age = age;
     }
+
+    public Person(String firstName, String lastName, String rfid, String job, int age) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.rfid = rfid;
+        this.job = job;
+        this.age = age;
+    }
+
     public long getId() {
         return id;
     }

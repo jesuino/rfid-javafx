@@ -68,7 +68,11 @@ public class ScanController implements Initializable {
                     p.getAge(),
                     p.getJob()
             ).get());
-        }, lblStatus::setText);
+            lblStatus.setText("");
+        }, s -> {
+            lblStatus.setText(s);
+            lblReadInfo.setText("Can't find any info on database...");
+        });
     }
 
 }

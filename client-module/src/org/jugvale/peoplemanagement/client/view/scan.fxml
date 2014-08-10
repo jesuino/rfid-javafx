@@ -8,18 +8,14 @@
 
 <AnchorPane id="AnchorPane" prefHeight="380.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml" fx:controller="org.jugvale.peoplemanagement.client.controller.ScanController">
   <children>
-    <Label layoutX="0.0" layoutY="14.0" prefWidth="500.0" styleClass="title" text="Scan RFID" />
-    <StackPane id="StackPane" fx:id="mainPane" layoutX="0.0" layoutY="54.0">
+    <StackPane id="StackPane" fx:id="mainPane" layoutX="0.0" layoutY="14.0" prefHeight="330.0" prefWidth="500.0" />
+    <VBox id="VBox" fx:id="infoPane" alignment="CENTER" layoutX="0.0" layoutY="32.0" prefHeight="312.0" spacing="20.0" styleClass="scanButton">
       <children>
-        <VBox id="VBox" fx:id="infoPane" alignment="CENTER" spacing="20.0" styleClass="scanButton">
-          <children>
-            <Label fx:id="lblRFID" prefHeight="55.0" prefWidth="500.0" styleClass="lblRFID" text="" />
-            <Label fx:id="lblReadInfo" prefHeight="67.0" prefWidth="500.0" styleClass="lblServerReturn" text="" />
-            <Button mnemonicParsing="false" onAction="#readRFID" text="SCAN" />
-            <Label fx:id="lblStatus" prefHeight="67.0" prefWidth="500.0" styleClass="lblStatus" text="" wrapText="true" VBox.vgrow="ALWAYS" />
-          </children>
-        </VBox>
+        <Label fx:id="lblRFID" prefHeight="55.0" prefWidth="500.0" styleClass="lblRFID" text="" />
+        <Label fx:id="lblReadInfo" prefHeight="87.0" prefWidth="500.0" styleClass="lblServerReturn" text="" wrapText="true" />
+        <Button mnemonicParsing="false" onAction="#readRFID" text="SCAN" />
+        <Label fx:id="lblStatus" prefHeight="67.0" prefWidth="500.0" styleClass="lblStatus" text="" wrapText="true" VBox.vgrow="ALWAYS" />
       </children>
-    </StackPane>
+    </VBox>
   </children>
 </AnchorPane>
