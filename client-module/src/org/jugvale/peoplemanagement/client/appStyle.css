@@ -1,7 +1,17 @@
+.root{
+    -fx-font-size: 10pt;
+    -fx-font-family: "Verdana";
+    -fx-base: #DF0101;
+    -fx-background: whitesmoke;
+    
+}
+
+.table-cell:selected {
+    -fx-background-color: black;
+}
 .homeLabel {
     -fx-font-size: 30px;
-    -fx-text-fill: red;
-    -fx-effect: dropshadow(three-pass-box , red, 30, 0.4 , 0 , 0 );
+    -fx-text-fill: black;
 }
 
 .homeLabel:hover {
