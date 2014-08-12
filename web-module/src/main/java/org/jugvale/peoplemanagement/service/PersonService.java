@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Default;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
@@ -23,7 +24,8 @@ public class PersonService {
 	}
 
 	public void remove(Person p) {
-		em.remove(p);
+		Person toRemove = findById(p.getId());
+		em.remove(toRemove);
 	}
 
 	public List<Person> listAll() {
@@ -37,16 +39,21 @@ public class PersonService {
 		return em.find(Person.class, id);
 	}
 
-	public Person findByRFID(String rfid){
+	public Person findByRFID(String rfid) {
 		CriteriaQuery<Person> cq = em.getCriteriaBuilder().createQuery(
 				Person.class);
 		Root<Person> person = cq.from(Person.class);
 		cq.where(person.get("rfid").in(rfid));
-		return em.createQuery(cq).getSingleResult();
+		Person result;
+		try {
+			result = em.createQuery(cq).getSingleResult();
+		} catch (NoResultException e) {
+			result = null;
+		}
+		return result;
 	}
 
 	public Person update(Person p) {
 		return em.merge(p);
 	}
-
 }
