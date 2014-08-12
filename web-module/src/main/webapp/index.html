@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>People Management</title>
+</head>
+<body>
+<h1>People Management</h1>
+<div>
+
+This is a JEE Application to expose "person information" <br />
+You can interact with it using a REST Client. For more information:
+
+<ul>
+<li><a href="http://fxapps.blogspot.com.br/2014/08/javaee-javafx-and-rfid-part-1.html">Part 1: The Application</a></li>
+<li><a href="http://fxapps.blogspot.com.br/2014/08/javaee-javafx-and-rfid-part-2-reading.html">Part 2: Reading RFID from Java </a></li>
+<li><a href="">Part 3: REST API and Security</a></li>
+<li><a href="">Part 4: The Client</a></li>
+</ul>
+</div>
+<h2>API</h2>
+<div>
+Base URL is /rest <br/>
+a GET on /person return all the people on the db in json format<br/>
+a POST on /person and sending a person representation in json saves it in the db if it has a on duplicated RFID <br/>
+a GET on /person/rfid/{some rfid} will return a person with that rfid <br/>
+a delete on /person/{some id} will delete that person
+</div>
+</body>
+</html>
