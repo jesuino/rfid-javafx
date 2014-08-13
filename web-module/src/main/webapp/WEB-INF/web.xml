@@ -6,13 +6,19 @@
 		<display-name>REST Security</display-name>
 		<web-resource-collection>
 			<web-resource-name>rest</web-resource-name>
-			<description />
 			<url-pattern>/rest/*</url-pattern>
+			<http-method>DELETE</http-method>
+			<http-method>POST</http-method>
+			<http-method>PUT</http-method>
+			<http-method>GET</http-method>
 		</web-resource-collection>
+		<auth-constraint>
+			<role-name>admin</role-name>
+		</auth-constraint>
 	</security-constraint>
 
 	<login-config>
 		<auth-method>BASIC</auth-method>
-		<realm-name>file</realm-name>
+		<realm-name>other</realm-name>
 	</login-config>
 </web-app>

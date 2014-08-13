@@ -26,3 +26,7 @@ Add a new one
 ```
 curl -X POST --data '{"firstName":"John","lastName":"Marx","rfid":"bca","job":"Lawer","age":30,"roles":[{"id":1,"name":"Admin"}]}' -H 'Content-type: Application/json' http://localhost:8080/people-management/rest/person
 ```
+
+# Cloud
+
+This project is also available on the cloud! More details to come.
