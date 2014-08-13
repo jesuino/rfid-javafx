@@ -68,7 +68,7 @@
 		</repository>
 	</repositories>
 	<build>
-		<finalName>jugvale-call4papers</finalName>
+		<finalName>people-management</finalName>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
