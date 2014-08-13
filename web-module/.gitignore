@@ -4,17 +4,15 @@
 *.jar
 *.war
 *.ear
-
 # Maven Build
 target/
-
 # Eclipse directories
 bin/
 .settings
 .classpath
 .project
-
 #forge file
 .forge_settings
-
-
+target
+.settings/*
+!.settings/.jsdtscope
