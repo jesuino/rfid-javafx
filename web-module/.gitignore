@@ -16,3 +16,8 @@ bin/
 target
 .settings/*
 !.settings/.jsdtscope
+
+#openshift
+.openshift/*
+deployments
+deployments/*
