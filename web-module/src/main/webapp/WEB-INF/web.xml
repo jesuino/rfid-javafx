@@ -19,6 +19,9 @@
 
 	<login-config>
 		<auth-method>BASIC</auth-method>
-		<realm-name>other</realm-name>
+		<realm-name>other</realm-name> 
 	</login-config>
+	<security-role>
+		<role-name>admin</role-name>
+	</security-role>
 </web-app>
