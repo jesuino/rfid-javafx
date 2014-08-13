@@ -1,0 +1,58 @@
+.root{
+    -fx-font-size: 10pt;
+    -fx-font-family: "Verdana";
+    -fx-base: #DF0101;
+    -fx-background: whitesmoke;
+    
+}
+
+.table-cell:selected {
+    -fx-background-color: black;
+}
+.homeLabel {
+    -fx-font-size: 30px;
+    -fx-text-fill: black;
+}
+
+.homeLabel:hover {
+    -fx-cursor: hand;
+}
+
+.title {
+    -fx-text-alignment: center;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-alignment: center;
+}
+
+.navigationButton {
+    -fx-font-size: 18px;
+    -fx-font-weight: bolder;
+}
+
+.scanButton {
+    -fx-font-size: 20px;
+    -fx-font-weight: bolder;
+    -fx-font-style: italic;
+    -fx-text-fill: red;
+}
+
+.lblRFID {
+    -fx-font-size: 20px;
+    -fx-font-weight: bolder;
+    -fx-font-style: italic;
+    -fx-text-fill: blue;
+
+}
+
+.lblStatus {
+    -fx-font-size: 15px;
+    -fx-font-weight: bolder;
+    -fx-font-style: italic;
+    -fx-text-fill: red;
+
+}
+
+.lblServerReturn {
+
+}

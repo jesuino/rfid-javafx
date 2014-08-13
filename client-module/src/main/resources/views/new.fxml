@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="380.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml" fx:controller="org.jugvale.peoplemanagement.client.controller.RegisterController">
+  <children>
+    <StackPane id="StackPane" fx:id="mainPane" layoutX="14.0" layoutY="17.0" prefWidth="486.0">
+      <children>
+        <VBox id="VBox" fx:id="formPane" alignment="CENTER" prefWidth="486.0" spacing="20.0">
+          <children>
+            <Label styleClass="title" text="Add new Person" />
+            <GridPane prefWidth="205.0">
+              <children>
+                <Label text="Last Name" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                <Label text="RFID" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <Label text="First Name" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <Label text="Job" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                <TextField id="lblNome" fx:id="txtFirstName" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <TextField id="lbl" fx:id="txtLastName" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <TextField id="lblJob" fx:id="txtJob" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <Label fx:id="lblRFID" onMouseClicked="#showRfidPane" text="CLICK TO SCAN NEW RFID" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                  <font>
+                    <Font name="System Italic" size="13.0" />
+                  </font>
+                </Label>
+                <Label text="Age" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                <TextField fx:id="txtAge" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+              </children>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="184.0" minWidth="10.0" prefWidth="80.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="292.0" minWidth="10.0" prefWidth="222.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+            </GridPane>
+            <Button mnemonicParsing="false" onAction="#save" styleClass="scanButton" text="Save" />
+            <Label fx:id="lblStatus" prefHeight="81.0" prefWidth="486.0" styleClass="lblStatus" text="" wrapText="true" />
+          </children>
+        </VBox>
+      </children>
+    </StackPane>
+  </children>
+</AnchorPane>
