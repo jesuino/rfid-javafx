@@ -43,7 +43,7 @@
                 <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
             </GridPane>
-            <Button mnemonicParsing="false" onAction="#save" styleClass="scanButton" text="Save" />
+            <Button mnemonicParsing="false" onAction="#save" text="Save" />
             <Label fx:id="lblStatus" prefHeight="81.0" prefWidth="486.0" styleClass="lblStatus" text="" wrapText="true" />
           </children>
         </VBox>

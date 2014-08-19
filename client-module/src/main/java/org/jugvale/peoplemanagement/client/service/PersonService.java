@@ -32,7 +32,8 @@ public abstract class PersonService {
      */
     public static PersonService getInstance() {
         if (service == null) {
-            service = new MockPersonService();
+            //service = new MockPersonService();
+            service = new RESTPersonService();
         }
         return service;
     }

@@ -5,6 +5,7 @@
  */
 package org.jugvale.peoplemanagement.client.model;
 
+import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -20,6 +21,7 @@ public class Person {
     private String rfid;
     private String job;
     private int age;
+    private List<Role> roles;
 
     public Person() {
     }
@@ -87,6 +89,14 @@ public class Person {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 
 }

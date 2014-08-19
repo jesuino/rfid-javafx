@@ -106,7 +106,6 @@ public class FTDIReaderPane extends TitledPane {
 			listDevices.getSelectionModel().clearSelection();
 			selectedDevice = selectedPath;
 			readDevice();
-			return;
 		}
 	}
 

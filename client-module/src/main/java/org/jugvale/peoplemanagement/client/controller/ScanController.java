@@ -70,6 +70,7 @@ public class ScanController implements Initializable {
             ).get());
             lblStatus.setText("");
         }, s -> {
+            rfidPane.setVisible(false);
             lblStatus.setText(s);
             lblReadInfo.setText("Can't find any info on database...");
         });
