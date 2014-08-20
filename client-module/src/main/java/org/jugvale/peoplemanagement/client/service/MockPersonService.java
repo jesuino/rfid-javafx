@@ -10,6 +10,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.jugvale.peoplemanagement.client.model.Person;
 
 /**
@@ -36,22 +38,38 @@ class MockPersonService extends PersonService {
     }
 
     @Override
-    public void save(Person p, Consumer<Person> onSuccess, Consumer<String> onFail) {
-        get(p.getRfid(), found -> {
-            onFail.accept("Person with RFID " + p.getRfid() + " found on the database.");
-        }, s -> {
+    public String save(Person p) {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(MockPersonService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Person q = get(p.getRfid());
+        if (q != null) {
+            return "Person with RFID " + p.getRfid() + " found on the database.";
+        } else {
             people.add(p);
-            onSuccess.accept(p);
-        });        
+            return "Person with RFID " + p.getRfid() + " saved with success.";
+        }
     }
 
     @Override
-    public void listAll(Consumer<List<Person>> onSuccess, Consumer<String> onFail) {
-        onSuccess.accept(people);
+    public List<Person> listAll() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(MockPersonService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return people;
     }
 
     @Override
-    public void remove(long id, Consumer<String> onSuccess, Consumer<String> onFail) {
+    public String remove(long id) {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(MockPersonService.class.getName()).log(Level.SEVERE, null, ex);
+        }
         Person toRemove = null;
         for (Person p : people) {
             if (p.getId() == id) {
@@ -60,21 +78,25 @@ class MockPersonService extends PersonService {
             }
         }
         if (toRemove == null) {
-            onFail.accept("Cant find person with ID " + id);
+            return "Cant find person with ID " + id;
         } else {
             people.remove(toRemove);
-            onSuccess.accept("People with ID " + id + " removed with success");
+            return "People with ID " + id + " removed with success";
         }
 
     }
 
     @Override
-    public void get(String rfid, Consumer<Person> onSuccess, Consumer<String> onFail) {
+    public Person get(String rfid) {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(MockPersonService.class.getName()).log(Level.SEVERE, null, ex);
+        }
         Optional<Person> found = people.stream().filter(p -> p.getRfid().equals(rfid)).findAny();
         if (found.isPresent()) {
-            onSuccess.accept(found.get());
-        } else {
-            onFail.accept("Person with RFID " + rfid + " not found");
+            return found.get();
         }
+        return null;
     }
 }

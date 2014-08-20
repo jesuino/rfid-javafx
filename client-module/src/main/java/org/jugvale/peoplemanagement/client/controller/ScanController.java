@@ -8,11 +8,14 @@ package org.jugvale.peoplemanagement.client.controller;
 import com.sun.javafx.binding.StringFormatter;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import org.jugvale.peoplemanagement.client.controller.task.AppTaskManager;
+import org.jugvale.peoplemanagement.client.model.Person;
 import org.jugvale.peoplemanagement.client.rfid.ui.FTDIReaderPane;
 import org.jugvale.peoplemanagement.client.service.PersonService;
 
@@ -60,20 +63,38 @@ public class ScanController implements Initializable {
     }
 
     public void getPersonInfo(String rfid) {
-        service.get(rfid, p -> {
-            lblReadInfo.setText(StringFormatter.format(
-                    "Person %s %s, %d years old, is a %s.",
-                    p.getFirstName(),
-                    p.getLastName(),
-                    p.getAge(),
-                    p.getJob()
-            ).get());
-            lblStatus.setText("");
-        }, s -> {
-            rfidPane.setVisible(false);
-            lblStatus.setText(s);
-            lblReadInfo.setText("Can't find any info on database...");
-        });
+        Task<Person> loadPerson = new Task<Person>() {
+            @Override
+            protected Person call() throws Exception {
+                Person p = service.get(rfid);
+                if (p == null) {
+                    throw new Error("Person with rfid " + rfid + " not found.");
+                }
+                return p;
+            }
+
+            @Override
+
+            protected void succeeded() {
+                Person p = getValue();
+                lblReadInfo.setText(String.format(
+                        "Person %s %s, %d years old, is a %s.",
+                        p.getFirstName(),
+                        p.getLastName(),
+                        p.getAge(),
+                        p.getJob()
+                ));
+                lblStatus.setText("");
+            }
+
+            @Override
+            protected void failed() {
+                rfidPane.setVisible(false);
+                lblStatus.setText(getException().getMessage());
+                lblReadInfo.setText("Can't find any info on database...");
+            }
+        };
+        AppTaskManager.doTask(loadPerson);
     }
 
 }

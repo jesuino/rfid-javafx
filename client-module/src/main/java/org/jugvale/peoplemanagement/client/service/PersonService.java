@@ -17,13 +17,13 @@ public abstract class PersonService {
 
     private static PersonService service;
 
-    public abstract void save(Person p, Consumer<Person> onSuccess, Consumer<String> onFail);
+    public abstract String save(Person p);
 
-    public abstract void listAll(Consumer<List<Person>> onSuccess, Consumer<String> onFail);
+    public abstract List<Person> listAll();
 
-    public abstract void remove(long id, Consumer<String> onSuccess, Consumer<String> onFail);
+    public abstract String remove(long id);
 
-    public abstract void get(String rfid, Consumer<Person> onSuccess, Consumer<String> onFail);
+    public abstract Person get(String rfid);
 
     /**
      * Return the actual PersonService
@@ -32,8 +32,8 @@ public abstract class PersonService {
      */
     public static PersonService getInstance() {
         if (service == null) {
-            //service = new MockPersonService();
-            service = new RESTPersonService();
+            service = new MockPersonService();
+            //service = new RESTPersonService();
         }
         return service;
     }
