@@ -17,7 +17,8 @@ bin/
 #forge file
 .forge_settings
 
-
+manifest.mf
+build.xml
 /client-module/nbproject/private/
 /client-module/dist/
 /client-module/build/
