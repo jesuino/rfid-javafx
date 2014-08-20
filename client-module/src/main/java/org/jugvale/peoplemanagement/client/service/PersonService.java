@@ -6,7 +6,6 @@
 package org.jugvale.peoplemanagement.client.service;
 
 import java.util.List;
-import java.util.function.Consumer;
 import org.jugvale.peoplemanagement.client.model.Person;
 
 /**
@@ -33,7 +32,7 @@ public abstract class PersonService {
     public static PersonService getInstance() {
         if (service == null) {
             service = new MockPersonService();
-            //service = new RESTPersonService();
+            service = new RESTPersonService();
         }
         return service;
     }

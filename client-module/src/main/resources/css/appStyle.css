@@ -2,8 +2,12 @@
     -fx-font-size: 10pt;
     -fx-font-family: "Verdana";
     -fx-base: #DF0101;
-    -fx-background: whitesmoke;
-    
+    -fx-background: lightgray;
+}
+
+.label {
+    -fx-font-size: 12pt;
+    -fx-font-weight: bold;
 }
 
 .table-cell:selected {
@@ -52,5 +56,3 @@
     -fx-text-fill: red;
 
 }
-
-

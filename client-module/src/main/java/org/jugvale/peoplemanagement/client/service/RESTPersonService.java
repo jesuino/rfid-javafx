@@ -39,55 +39,34 @@ public class RESTPersonService extends PersonService {
         createClient();
     }
 
+    @Override
+    public String save(Person p) {
 
-    public void save(Person p, Consumer<Person> onSuccess, Consumer<String> onFail) {
-        try {
-            Entity<Person> personEntity = Entity.entity(p, MEDIA_TYPE);
-            Response r = client.target(BASE_URL).request(MEDIA_TYPE).post(personEntity);
-            if (r.getStatus() != 201) {
-                onFail.accept("Error saving person with RFID " + p.getRfid() + ". Check if it already exists.");
-            } else {
-                get(p.getRfid(), onSuccess, onFail);
-            }
-        } catch (IllegalArgumentException | NullPointerException e) {
-            handle(e, onFail);
+        Entity<Person> personEntity = Entity.entity(p, MEDIA_TYPE);
+        Response r = client.target(BASE_URL).request(MEDIA_TYPE).post(personEntity);
+        if (r.getStatus() != 201) {
+            return "Error saving person with RFID " + p.getRfid() + ". Check if it already exists.";
+        } else {
+            return "New Person created with sucess";
         }
+
     }
 
-    public void listAll(Consumer<List<Person>> onSuccess, Consumer<String> onFail) {
-        try {
-            List<Person> people = client.target(BASE_URL)
-                    .request(MEDIA_TYPE)
-                    .get(new GenericType<List<Person>>() {
-                    });
-            onSuccess.accept(people);
-        } catch (IllegalArgumentException | NullPointerException e) {
-            handle(e, onFail);
-        }
+    @Override
+    public List<Person> listAll() {
+        return client.target(BASE_URL).request(MEDIA_TYPE).get(new GenericType<List<Person>>() {
+        });
     }
 
-    public void remove(long id, Consumer<String> onSuccess, Consumer<String> onFail) {
-        try {
-            client.target(BASE_URL)
-                    .path(String.valueOf(id))
-                    .request()
-                    .delete();
-            onSuccess.accept("Person with id " + id + " removed with success");
-        } catch (IllegalArgumentException | NullPointerException e) {
-            handle(e, onFail);
-        }
+    @Override
+    public String remove(long id) {
+        client.target(BASE_URL).path(String.valueOf(id)).request().delete();
+        return "Person with id " + id + " removed with success";
     }
 
-    public void get(String rfid, Consumer<Person> onSuccess, Consumer<String> onFail) {
-        try {
-            Person p = client.target(BASE_URL)
-                    .path("rfid").path(rfid)
-                    .request(MEDIA_TYPE)
-                    .get(Person.class);
-            onSuccess.accept(p);
-        } catch (IllegalArgumentException | NullPointerException e) {
-            handle(e, onFail);
-        }
+    @Override
+    public Person get(String rfid) {
+        return client.target(BASE_URL).path("rfid").path(rfid).request(MEDIA_TYPE).get(Person.class);
     }
 
     private void createClient() {
@@ -103,26 +82,6 @@ public class RESTPersonService extends PersonService {
     private void handle(java.lang.RuntimeException e, Consumer<String> onFail) {
         e.printStackTrace();
         onFail.accept("Error: " + e.getMessage() + "; Exception: " + e.getClass().getSimpleName());
-    }
-
-    @Override
-    public String save(Person p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<Person> listAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String remove(long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Person get(String rfid) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
